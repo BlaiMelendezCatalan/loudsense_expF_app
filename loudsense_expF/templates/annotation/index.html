@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Annotation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="flash_center" align="center">
+        <audio controls >
+            <source src="{{ url_for('static', filename='media/'+wav_name) }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio> 
+    </div>
+    <div class="flash_center">
+        <button font-size="24px" type="button" onclick="window.location.href='{{ url_for('annotation.update_db', wav_name=wav_name, class_='Audible') }}'">Audible</button>
+        <p></p>
+        <button font-size="24px" type="button" onclick="window.location.href='{{ url_for('annotation.update_db', wav_name=wav_name, class_='Barely') }}'">Barely</button>
+        <p></p>
+        <button font-size="24px" type="button" onclick="window.location.href='{{ url_for('annotation.update_db', wav_name=wav_name, class_='Inaudible') }}'">Inaudible</button>
+    </div>
+{% endblock %}
