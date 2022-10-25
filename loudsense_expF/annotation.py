@@ -42,17 +42,22 @@ def index():
         done_wav_names.append(row['wav_name'])
 
     wav_name = None
+    total_annotations = 0
     for name in all_wav_names:
         if group_id != 'all' and f'___group_{group_id}' not in name:
             continue
-        if name not in done_wav_names:
+        total_annotations += 1
+        if wav_name is None and name not in done_wav_names:
             wav_name = name
-            break
+
 
     if wav_name is None:
         return render_template('annotation/done.html')
 
-    return render_template('annotation/index.html', wav_name=wav_name)
+    return render_template('annotation/index.html',
+                           wav_name=wav_name,
+                           done_annotations=len(done_wav_names),
+                           total_annotations=total_annotations)
 
 @bp.route('/<string:wav_name>/<string:class_>/update_db')
 @login_required

@@ -18,4 +18,7 @@
         <p></p>
         <button font-size="24px" type="button" onclick="window.location.href='{{ url_for('annotation.update_db', wav_name=wav_name, class_='Inaudible') }}'">Inaudible</button>
     </div>
+    <div class="flash_center">
+        <p>{{ done_annotations }}/{{ total_annotations }}</p>
+    </div>
 {% endblock %}

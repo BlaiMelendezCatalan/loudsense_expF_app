@@ -1,5 +1,7 @@
 .venv/
 
+loudsense_expF/static/media/
+
 *.pyc
 __pycache__/
 
