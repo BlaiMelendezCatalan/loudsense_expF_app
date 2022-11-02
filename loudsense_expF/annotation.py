@@ -33,7 +33,7 @@ def index():
 
     rows = db.execute(
         'SELECT a.wav_name FROM annotation a JOIN user u ON a.annotator_id '
-        '= u.id ORDER BY created DESC'
+        f'= u.id and a.annotator_id = {user_id} ORDER BY created DESC'
     ).fetchall()
     db.close()
 
